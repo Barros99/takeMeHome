@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AnimalCard from "../card/AnimalCard";
 import "./AnimalList.css";
-import { API_URL } from "../../utils/util";
+import { apiUrl } from "../../utils/util";
 
 interface Animal {
   id: number;
@@ -19,10 +19,12 @@ const AnimalList: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  console.log("API_URL => ", apiUrl);
+
   useEffect(() => {
     const fetchAnimals = async () => {
       try {
-        const response = await fetch(`${API_URL}`);
+        const response = await fetch(`${apiUrl}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -58,7 +60,7 @@ const AnimalList: React.FC = () => {
       );
 
       await fetch(
-        `${API_URL}/${id}/?status=${updatedAnimal?.status}`,
+        `${apiUrl}/${id}/?status=${updatedAnimal?.status}`,
         {
           method: "PUT",
           headers: {

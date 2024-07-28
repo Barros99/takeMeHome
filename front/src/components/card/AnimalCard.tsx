@@ -3,7 +3,7 @@ import "./AnimalCard.css";
 import {
   checkNumberAndAddPlural,
   convertDateToDdMmYyyy,
-  API_URL,
+  apiUrl,
 } from "../../utils/util";
 
 interface AnimalCardProps {
@@ -35,7 +35,7 @@ const AnimalCard: React.FC<AnimalCardProps> = ({
   return (
     <div className="animal-card">
       <img
-        src={`${API_URL}/foto/${imageUrl}`}
+        src={`${apiUrl}/foto/${imageUrl}`}
         alt={name}
       />
       <h2>{name}</h2>

@@ -1,4 +1,9 @@
-export const API_URL = "http://localhost:8080/api/animals";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export const apiUrl =
+  process.env.API_URL || "http://localhost:8080/api/animals";
 
 export function convertDatetoLocaleDateString(date: string): string {
   const dateObj = new Date(date);

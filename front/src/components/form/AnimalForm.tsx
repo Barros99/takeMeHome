@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
-import { API_URL } from "../../utils/util";
+import { apiUrl } from "../../utils/util";
 import "./AnimalForm.css";
 
 const AnimalForm: React.FC = () => {
@@ -32,9 +32,9 @@ const AnimalForm: React.FC = () => {
     formData.append("category", category);
 
     try {
-      const response = await axios.post(`${API_URL}/upload`, formData);
+      const response = await axios.post(`${apiUrl}/upload`, formData);
       setMessage(response.data);
-      setImagePath(`${API_URL}/foto/${foto.name}`);
+      setImagePath(`${apiUrl}/foto/${foto.name}`);
     } catch (error) {
       setMessage("Erro ao enviar a imagem.");
     }
