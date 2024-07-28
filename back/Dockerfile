@@ -1,10 +1,10 @@
-FROM adoptopenjdk:17-jdk-hotspot AS build
-WORKDIR /app
-COPY . .
-RUN ./mvn clean package
+FROM maven:3.8.4-openjdk-17 as build-image
+RUN mkdir -p /app/source
+COPY . /app/source
+WORKDIR /app/source
+RUN mvn clean package -DskipTests
 
-FROM adoptopenjdk:17-jre-hotspot
-WORKDIR /app
-COPY --from=build /app/build/libs/takeMeHome.jar takeMeHome.jar
+FROM eclipse-temurin:17-jre-alpine
+COPY --from=build-image /app/source/target/*.jar /app/takeMeHome.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "takeMeHome.jar"]
+ENTRYPOINT ["java", "-jar", "/app/takeMeHome.jar"]
