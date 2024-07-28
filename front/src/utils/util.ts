@@ -1,9 +1,5 @@
-import dotenv from "dotenv";
-
-dotenv.config();
-
 export const apiUrl =
-  process.env.API_URL || "http://localhost:8080/api/animals";
+import.meta.env.VITE_API_URL;
 
 export function convertDatetoLocaleDateString(date: string): string {
   const dateObj = new Date(date);
