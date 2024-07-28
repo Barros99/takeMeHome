@@ -16,7 +16,6 @@
     <description>takeMeHome</description>
     <properties>
         <java.version>17</java.version>
-        <filename>takeMeHome</filename>
     </properties>
     <dependencies>
 
