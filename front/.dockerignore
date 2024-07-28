@@ -1,0 +1,9 @@
+node_modules
+*.log
+*.lock
+*.md
+*.yml
+*.yaml
+*.git
+*.gitignore
+*.dockerignore

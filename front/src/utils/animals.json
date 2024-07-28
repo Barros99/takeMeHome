@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Rex",
+      "description": "Um cachorro amigável.",
+      "imageUrl": "url-to-image",
+      "category": "Cachorro",
+      "birthdate": "2020-01-01",
+      "status": "Dog"
+    },
+    {
+      "name": "Mimi",
+      "description": "Uma gata carinhosa.",
+      "imageUrl": "url-to-image",
+      "category": "Gato",
+      "birthdate": "2018-06-15",
+      "status": "Cat"
+    },
+    {
+      "name": "Blu",
+      "description": "Um papagaio falante.",
+      "imageUrl": "url-to-image",
+      "category": "Ave",
+      "birthdate": "2015-11-23",
+      "status": "Bird"
+    },
+    {
+      "name": "Nemo",
+      "description": "Um peixe colorido.",
+      "imageUrl": "url-to-image",
+      "category": "Peixe",
+      "birthdate": "2019-03-12",
+      "status": "Fish"
+    },
+    {
+      "name": "Leo",
+      "description": "Um lagarto tranquilo.",
+      "imageUrl": "url-to-image",
+      "category": "Reptil",
+      "birthdate": "2017-08-29",
+      "status": "Reptile"
+    },
+    {
+      "name": "Bella",
+      "description": "Uma coelha adorável.",
+      "imageUrl": "url-to-image",
+      "category": "Mamífero",
+      "birthdate": "2021-05-14",
+      "status": "Rabbit"
+    },
+    {
+      "name": "Spike",
+      "description": "Um porquinho-da-índia curioso.",
+      "imageUrl": "url-to-image",
+      "category": "Mamífero",
+      "birthdate": "2022-02-07",
+      "status": "Guinea Pig"
+    },
+    {
+      "name": "Tina",
+      "description": "Uma tartaruga calma.",
+      "imageUrl": "url-to-image",
+      "category": "Reptil",
+      "birthdate": "2010-09-18",
+      "status": "Turtle"
+    },
+    {
+      "name": "Fluffy",
+      "description": "Um hamster energético.",
+      "imageUrl": "url-to-image",
+      "category": "Mamífero",
+      "birthdate": "2023-01-05",
+      "status": "Hamster"
+    },
+    {
+      "name": "Goldie",
+      "description": "Um peixinho dourado.",
+      "imageUrl": "url-to-image",
+      "category": "Peixe",
+      "birthdate": "2020-07-20",
+      "status": "Fish"
+    }
+  ]
+  

@@ -1,0 +1,81 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "takeMeHome",
+    "collectionId": "83de1f10-e3f1-4ed7-ab52-5abcf590198b",
+    "dateExported": "2024-07-22T04:00:17.998Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d032219b-cc09-48aa-af50-da177e825cde",
+            "colId": "83de1f10-e3f1-4ed7-ab52-5abcf590198b",
+            "containerId": "",
+            "name": "http://localhost:8080/api/animals",
+            "url": "http://localhost:8080/upload",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-07-22T03:08:17.016Z",
+            "modified": "2024-07-22T03:08:17.016Z",
+            "headers": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "foto",
+                        "value": "",
+                        "isDisabled": true
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "foto",
+                        "value": "c:\\Users\\jeanm\\OneDrive\\Documentos\\iphone15\\IMG_0058[1].HEIC"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "ffd246a6-1d16-41c1-8c35-b1954da178ea",
+            "colId": "83de1f10-e3f1-4ed7-ab52-5abcf590198b",
+            "containerId": "",
+            "name": "listAnimals",
+            "url": "http://localhost:8080/api/animals",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-07-22T03:08:44.020Z",
+            "modified": "2024-07-22T03:08:44.020Z",
+            "headers": []
+        },
+        {
+            "_id": "93afff5e-234d-43f8-bfce-45d9408616b2",
+            "colId": "83de1f10-e3f1-4ed7-ab52-5abcf590198b",
+            "containerId": "",
+            "name": "getAnimalById",
+            "url": "http://localhost:8080/api/animals/6fab254e-83f3-4590-9ffa-e400c7004a83",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-07-22T03:08:51.492Z",
+            "modified": "2024-07-22T03:08:51.492Z",
+            "headers": []
+        },
+        {
+            "_id": "fd6c8214-4a93-43ae-ab50-c3af39629d8a",
+            "colId": "83de1f10-e3f1-4ed7-ab52-5abcf590198b",
+            "containerId": "",
+            "name": "saveAnimal",
+            "url": "http://localhost:8080/api/animals",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-07-22T03:41:00.451Z",
+            "modified": "2024-07-22T03:41:00.451Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Rex\",\n  \"birthdate\": \"2018-05-15\",\n  \"gender\": \"Male\",\n  \"species\": \"Dog\",\n  \"description\": \"Friendly and playful\",\n  \"image\": \"dog.jpg\",\n  \"imageUrl\": \"https://example.com/dog.jpg\",\n  \"category\": \"Pet\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "EKNhIUhtpJcvMktunPww569hRh8G2_Vi5mt2obJcubT2kdDHBSJ5OchBdXIYJGuvZth9MC4Ly3VO1xPPk64HDA"
+}
