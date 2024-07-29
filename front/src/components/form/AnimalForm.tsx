@@ -61,7 +61,7 @@ const AnimalForm: React.FC = () => {
           placeholder="Descrição"
           required
         />
-        <div>
+        <div className="pick">
           <label htmlFor="status">Status:</label>
           <select
             value={status}
