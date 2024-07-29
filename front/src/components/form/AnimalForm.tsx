@@ -8,10 +8,9 @@ const AnimalForm: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [birthdate, setBirthdate] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [status, setStatus] = useState<string>("");
+  const [status, setStatus] = useState<string>("DISPONIVEL");
   const [category, setCategory] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [imagePath, setImagePath] = useState<string>("");
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -34,7 +33,6 @@ const AnimalForm: React.FC = () => {
     try {
       const response = await axios.post(`${apiUrl}/upload`, formData);
       setMessage(response.data);
-      setImagePath(`${apiUrl}/foto/${foto.name}`);
     } catch (error) {
       setMessage("Erro ao enviar a imagem.");
     }
@@ -84,7 +82,6 @@ const AnimalForm: React.FC = () => {
         <button type="submit">Enviar</button>
         <p>{message}</p>
       </form>
-      {imagePath && <img src={imagePath} alt="Uploaded" />}
     </div>
   );
 };

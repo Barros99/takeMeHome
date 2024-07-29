@@ -1,5 +1,4 @@
-export const apiUrl =
-import.meta.env.VITE_API_URL;
+export const apiUrl = import.meta.env.VITE_API_URL;
 
 export function convertDatetoLocaleDateString(date: string): string {
   const dateObj = new Date(date);

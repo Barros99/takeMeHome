@@ -1,10 +1,9 @@
 import React from "react";
-import "./AnimalCard.css";
 import {
-  checkNumberAndAddPlural,
-  convertDateToDdMmYyyy,
   apiUrl,
+  convertDateToDdMmYyyy
 } from "../../utils/util";
+import "./AnimalCard.css";
 
 interface AnimalCardProps {
   imageUrl: string;
@@ -43,7 +42,7 @@ const AnimalCard: React.FC<AnimalCardProps> = ({
       <p>Categoria: {category}</p>
       <p>Data de Nascimento: {convertDateToDdMmYyyy(birthdate)}</p>
       <p>
-        Idade: {idade} {checkNumberAndAddPlural(idade, "ano")}
+        Idade: {idade}
       </p>
       <label>
         Status: {isAdopted(status) ? "ADOTADO" : "DISPONIVEL"}

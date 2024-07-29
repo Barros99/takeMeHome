@@ -56,17 +56,18 @@ public class Animal {
     /**
      * Instantiates a new Animal.
      */
-    public Animal() {}
+    public Animal() {
+    }
 
     /**
      * Constructor to create an instance of Animal.
      *
-     * @param name the name of the animal
+     * @param name        the name of the animal
      * @param description the description of the animal
-     * @param imageUrl the URL of the animal's image
-     * @param category the category of the animal (e.g., dog, cat)
-     * @param birthdate the birthdate of the animal
-     * @param status the status of the animal (AVAILABLE, ADOPTED)
+     * @param imageUrl    the URL of the animal's image
+     * @param category    the category of the animal (e.g., dog, cat)
+     * @param birthdate   the birthdate of the animal
+     * @param status      the status of the animal (AVAILABLE, ADOPTED)
      */
     public Animal(String name, String description, String imageUrl, String category,
             LocalDate birthdate, Status status) {
@@ -131,8 +132,42 @@ public class Animal {
         this.status = status;
     }
 
-    public int getIdade() {
-        return Period.between(this.birthdate, LocalDate.now()).getYears();
+    public String getIdade() {
+        LocalDate currentDate = LocalDate.now();
+        Period period = Period.between(this.birthdate, currentDate);
+
+        int years = period.getYears();
+        int months = period.getMonths();
+        int days = period.getDays();
+
+        StringBuilder sb = new StringBuilder();
+        if (years > 0) {
+            sb.append(years).append(" ano");
+            if (years > 1) {
+                sb.append("s");
+            }
+        }
+        if (months > 0) {
+            if (sb.length() > 0) {
+                sb.append(", ");
+            }
+            if (months == 1) { 
+                sb.append(months).append(" mês");
+            } else {
+                sb.append(months).append(" meses");
+            }
+        }
+        if (days > 0) {
+            if (sb.length() > 0) {
+                sb.append(", ");
+            }
+            sb.append(days).append(" dia");
+            if (days > 1) {
+                sb.append("s");
+            }
+        }
+
+        return sb.toString().trim();
     }
 
     public enum Status {

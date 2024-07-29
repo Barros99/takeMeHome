@@ -24,7 +24,7 @@ public class AnimalService {
 
     private final AnimalRepository animalRepository;
 
-    private static final String DIRETORIO_UPLOAD = "src/assets/uploads/";
+    private static final String DIRETORIO_UPLOAD = "src/main/resources/assets/uploads/";
 
     public AnimalService(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;

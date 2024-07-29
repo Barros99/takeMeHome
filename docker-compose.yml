@@ -1,15 +1,13 @@
-version: '3'
 services:
   frontend:
     build:
       context: ./front
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "5173:80"
     depends_on:
       - backend
-    environment:
-      - API_URL=http://backend:8080/api/animals
+
   backend:
     build:
       context: ./back
@@ -20,6 +18,7 @@ services:
       SPRING_PROFILES_ACTIVE: dev
     volumes:
       - maven-cache:/root/.m2
+      - ./back/src/main/resources/assets/uploads:/app/images
 
 volumes:
   maven-cache:

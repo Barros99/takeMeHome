@@ -76,7 +76,7 @@ public class AnimalController {
     @GetMapping("/foto/{filename:.+}")
     public ResponseEntity<Resource> serveFoto(@PathVariable String filename) {
         try {
-            Path file = Paths.get("src/assets/uploads/").resolve(filename);
+            Path file = Paths.get("src/main/resources/assets/uploads/").resolve(filename);
             Resource resource = new UrlResource(file.toUri());
 
             if (resource.exists() || resource.isReadable()) {
