@@ -153,4 +153,4 @@ Jean Barros - [linkedIn.com/in/j3anbarros/](https://www.linkedin.com/in/j3anbarr
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/j3anbarros/
-[product-screenshot]: /back/src/main/resources/assests/aw.png
+[product-screenshot]: /back/src/main/resources/assets/aw.png
