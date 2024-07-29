@@ -2,8 +2,16 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import { apiUrl } from "../../utils/util";
 import "./AnimalForm.css";
+import {
+  adopted,
+  available,
+  Category,
+  Description,
+  Name,
+  send,
+} from "../../utils/constants";
 
-const AnimalForm: React.FC = () => {
+const Register: React.FC = () => {
   const [foto, setFoto] = useState<File | null>(null);
   const [name, setName] = useState<string>("");
   const [birthdate, setBirthdate] = useState<string>("");
@@ -39,14 +47,19 @@ const AnimalForm: React.FC = () => {
   };
 
   return (
-    <div id="form">
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} required />
+        <input
+          type="file"
+          onChange={handleFileChange}
+          required
+          accept=".jpg, .jpeg, .png"
+          lang="en"
+        />
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Nome"
+          placeholder={Name}
           required
         />
         <input
@@ -58,7 +71,7 @@ const AnimalForm: React.FC = () => {
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Descrição"
+          placeholder={Description}
           required
         />
         <div className="pick">
@@ -68,22 +81,21 @@ const AnimalForm: React.FC = () => {
             onChange={(e) => setStatus(e.target.value)}
             required
           >
-            <option value="DISPONIVEL">Disponível</option>
-            <option value="ADOTADO">Adotado</option>
+            <option value="DISPONIVEL">{available}</option>
+            <option value="ADOTADO">{adopted}</option>
           </select>
         </div>
         <input
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          placeholder="Categoria"
+          placeholder={Category}
           required
         />
-        <button type="submit">Enviar</button>
+        <button type="submit">{send}</button>
         <p>{message}</p>
       </form>
-    </div>
   );
 };
 
-export default AnimalForm;
+export default Register;

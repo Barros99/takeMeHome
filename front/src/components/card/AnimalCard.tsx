@@ -4,6 +4,7 @@ import {
   convertDateToDdMmYyyy
 } from "../../utils/util";
 import "./AnimalCard.css";
+import { BirthDate, Category } from "../../utils/constants";
 
 interface AnimalCardProps {
   imageUrl: string;
@@ -39,8 +40,8 @@ const AnimalCard: React.FC<AnimalCardProps> = ({
       />
       <h2>{name}</h2>
       <p>{description}</p>
-      <p>Categoria: {category}</p>
-      <p>Data de Nascimento: {convertDateToDdMmYyyy(birthdate)}</p>
+      <p>{Category}: {category}</p>
+      <p>{BirthDate}: {convertDateToDdMmYyyy(birthdate)}</p>
       <p>
         Idade: {idade}
       </p>
