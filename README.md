@@ -22,11 +22,26 @@
 
 [![Take Me Home][product-screenshot]](https://github.com/Barros99/)
 
-Take me home, um site de adoção de animais
+Take me home, um site de adoção de animais.
 
-Basicamente é um backend RESTful, que fornece um CRUD para os seguintes endpoints:
+O usuário vai poder cadastrar um animal e fazer o upload de uma foto.
 
-- /v1/animals
+É possível listar os animais cadastrados e mudar seu status entre
+disponível e adotado.
+
+O front foi desenvolvido com react (vite) e roda na porta 5173
+
+http://localhost:5173
+
+O back foi desenvolvido em java, spring boot e roda na porta 8080
+
+http://localhost:8080/api/animals
+
+Para facilitar o deploy foi introduzido o docker. Há uma seção explicando como
+
+rodar a aplicação de maneira direta e fácil.
+
+Há na seção de documentação da API o link descrevendo melhor os endpoints e seus verbos.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -38,6 +53,8 @@ Estas foram algumas das tecnologias utilizadas neste projeto:
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Docker](https://www.docker.com/)
 - [H2](https://dbdb.io/db/h2/)
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -69,9 +86,13 @@ Siga os passos abaixo para rodar a aplicação:
    ```js
    docker-compose up -d
    ```
-4. Para acessar a api, copie e cole o endereço abaixo no seu navegador
+4. Para acessar a frontend, copie e cole o endereço abaixo no seu navegador
    ```js
-   http://localhost:8080/v1/animals
+   http://localhost:5473
+   ```
+5. Para acessar a API, copie e cole o endereço abaixo no seu navegador
+   ```js
+   http://localhost:8080/api/animals
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -85,7 +106,7 @@ A documentação pode ser acessada no endereço abaixo:
 Formato padrão:
 
 ```js
-  http://localhost:8080/swagger-ui.html
+  http://localhost:8080/swagger-ui-custom.html
 ```
 
 Formato json:
@@ -99,6 +120,10 @@ Formato json:
 <!-- DATABASE -->
 
 ## Acesso a interface do banco H2
+
+Usuário para acessar o banco é "sa" e a senha "password"
+
+preencher o campo JDBC URL com jdbc:h2:mem:pawsitive
 
 O banco de dados em memória H2, pode ser acessado em:
 
@@ -128,4 +153,4 @@ Jean Barros - [linkedIn.com/in/j3anbarros/](https://www.linkedin.com/in/j3anbarr
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/j3anbarros/
-[product-screenshot]: src/assests/mern.png
+[product-screenshot]: /back/src/main/resources/assests/aw.png
