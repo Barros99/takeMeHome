@@ -22,7 +22,7 @@
 
 [![Take Me Home][product-screenshot]](https://github.com/Barros99/)
 
-Esse projeto é um desafio final para a acelaração em Java, fornecido pela [Trybe](https://www.betrybe.com/) em parceria com a [CI&T](https://ciandt.com/br/)
+Take me home, um site de adoção de animais
 
 Basicamente é um backend RESTful, que fornece um CRUD para os seguintes endpoints:
 
