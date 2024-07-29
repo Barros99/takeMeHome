@@ -10,3 +10,4 @@ export const adopted = "Adopted";
 export const Category = "Category";
 export const BirthDate = "Birth Date";
 export const age = "Age";
+export const Name = "Name";

@@ -1,15 +1,15 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import {
+    adopted,
+    available,
+    Category,
+    Description,
+    Name,
+    send,
+} from "../../utils/constants";
 import { apiUrl } from "../../utils/util";
 import "./AnimalForm.css";
-import {
-  adopted,
-  available,
-  Category,
-  Description,
-  Name,
-  send,
-} from "../../utils/constants";
 
 const Register: React.FC = () => {
   const [foto, setFoto] = useState<File | null>(null);
