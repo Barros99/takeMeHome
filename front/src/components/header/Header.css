@@ -1,0 +1,29 @@
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  width: 14rem;
+  height: auto;
+  padding-right: 8px;
+}
+
+.header {
+  background-color: #282c34;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.header nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.header nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.header nav ul li a {
+  color: white;
+  text-decoration: none;
+}

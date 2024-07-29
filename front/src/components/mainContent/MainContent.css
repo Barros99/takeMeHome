@@ -1,0 +1,19 @@
+.main-content {
+    flex: 1;
+    padding: 1rem;
+    background-color: #f1f1f1;
+  }
+  
+  @media (max-width: 600px) {
+    .main-content {
+      padding: 0.5rem;
+    }
+  }
+  
+  @media (min-width: 601px) and (max-width: 900px) {
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; /* Distribui os cards igualmente */
+    }
+  }
