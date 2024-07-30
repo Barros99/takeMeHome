@@ -90,7 +90,7 @@ Follow the steps below to run the application:
 5. To access the API, copy and paste the address below into your browser:
    ```js
    http://localhost:8080/api/animals
-
+   ```
 
 [Back to Top](#top)
 
