@@ -17,11 +17,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
@@ -36,194 +34,189 @@ import com.interview.takemehome.service.AnimalService;
 @AutoConfigureMockMvc
 public class AnimalServiceTest {
 
-    @Mock
-    private AnimalRepository animalRepository;
+        @Mock
+        private AnimalRepository animalRepository;
 
-    @InjectMocks
-    private AnimalService animalService;
+        @InjectMocks
+        private AnimalService animalService;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
-    @Test
-    public void testGetAllAnimals_ShouldReturnAllAnimals() {
-        // Arrange
-        Animal animal1 = new Animal("Rex", "Um cachorro amigável e brincalhão.",
-                "https://example.com/rex.jpg", "cachorro", LocalDate.of(2018, 5, 20),
-                Animal.Status.DISPONIVEL);
+        @Test
+        public void testGetAllAnimals_ShouldReturnAllAnimals() {
+                // Arrange
+                Animal animal1 = new Animal("Rex", "Um cachorro amigável e brincalhão.",
+                                "https://example.com/rex.jpg", "cachorro",
+                                LocalDate.of(2018, 5, 20), Animal.Status.DISPONIVEL);
 
-        Animal animal2 =
-                new Animal("Mimi", "Uma gata calma e carinhosa.", "https://example.com/mimi.jpg",
-                        "gato", LocalDate.of(2020, 8, 15), Animal.Status.ADOTADO);
+                Animal animal2 = new Animal("Mimi", "Uma gata calma e carinhosa.",
+                                "https://example.com/mimi.jpg", "gato", LocalDate.of(2020, 8, 15),
+                                Animal.Status.ADOTADO);
 
-        List<Animal> animals = Arrays.asList(animal1, animal2);
-        AnimalRepository mockRepository = mock(AnimalRepository.class);
+                List<Animal> animals = Arrays.asList(animal1, animal2);
+                AnimalRepository mockRepository = mock(AnimalRepository.class);
 
-        when(mockRepository.findAll()).thenReturn(animals);
-        AnimalService animalService = new AnimalService(mockRepository);
+                when(mockRepository.findAll()).thenReturn(animals);
+                AnimalService animalService = new AnimalService(mockRepository);
 
-        // Act
-        List<Animal> result = animalService.getAllAnimals();
+                // Act
+                List<Animal> result = animalService.getAllAnimals();
 
-        // Assert
-        assertNotNull(result);
-        assertEquals("Rex", result.get(0).getName());
-        assertEquals("Mimi", result.get(1).getName());
-        assertEquals(2, result.size());
-    }
+                // Assert
+                assertNotNull(result);
+                assertEquals("Rex", result.get(0).getName());
+                assertEquals("Mimi", result.get(1).getName());
+                assertEquals(2, result.size());
+        }
 
-    @Test
-    public void testGetAnimalById_ShouldReturnAnimalWhenFound() {
-        // Arrange
-        Animal expectedAnimal = new Animal("Rex", "Um cachorro amigável e brincalhão.",
-                "https://example.com/rex.jpg", "cachorro", LocalDate.of(2018, 5, 20),
-                Animal.Status.DISPONIVEL);
-        UUID id = expectedAnimal.getId();
-        AnimalRepository mockRepository = mock(AnimalRepository.class);
-        when(mockRepository.findById(id)).thenReturn(Optional.of(expectedAnimal));
-        AnimalService animalService = new AnimalService(mockRepository);
+        @Test
+        public void testGetAnimalById_ShouldReturnAnimalWhenFound() {
+                // Arrange
+                Animal expectedAnimal = new Animal("Rex", "Um cachorro amigável e brincalhão.",
+                                "https://example.com/rex.jpg", "cachorro",
+                                LocalDate.of(2018, 5, 20), Animal.Status.DISPONIVEL);
+                UUID id = expectedAnimal.getId();
+                AnimalRepository mockRepository = mock(AnimalRepository.class);
+                when(mockRepository.findById(id)).thenReturn(Optional.of(expectedAnimal));
+                AnimalService animalService = new AnimalService(mockRepository);
 
-        // Act
-        Animal result = animalService.getAnimalById(id);
+                // Act
+                Animal result = animalService.getAnimalById(id);
 
-        // Assert
-        assertNotNull(result);
-        assertEquals(expectedAnimal, result);
-    }
+                // Assert
+                assertNotNull(result);
+                assertEquals(expectedAnimal, result);
+        }
 
-    @Test
-    public void testSaveAnimal_ShouldSaveAnimal() {
-        // Arrange
-        Animal animal = new Animal("Rex", "Um cachorro amigável e brincalhão.",
-                "https://example.com/rex.jpg", "cachorro", LocalDate.of(2018, 5, 20),
-                Animal.Status.DISPONIVEL);
+        @Test
+        public void testSaveAnimal_ShouldSaveAnimal() {
+                // Arrange
+                Animal animal = new Animal("Rex", "Um cachorro amigável e brincalhão.",
+                                "https://example.com/rex.jpg", "cachorro",
+                                LocalDate.of(2018, 5, 20), Animal.Status.DISPONIVEL);
 
-        AnimalRepository mockRepository = mock(AnimalRepository.class);
-        when(mockRepository.save(any(Animal.class))).thenReturn(animal);
-        AnimalService animalService = new AnimalService(mockRepository);
+                AnimalRepository mockRepository = mock(AnimalRepository.class);
+                when(mockRepository.save(any(Animal.class))).thenReturn(animal);
+                AnimalService animalService = new AnimalService(mockRepository);
 
-        // Act
-        Animal result = animalService.saveAnimal(animal);
+                // Act
+                Animal result = animalService.saveAnimal(animal);
 
-        // Assert
-        assertNotNull(result);
-        assertEquals("Rex", result.getName());
-    }
+                // Assert
+                assertNotNull(result);
+                assertEquals("Rex", result.getName());
+        }
 
-    @Test
-    public void testSaveAnimal_ShouldThrowExceptionForEmptyName() {
-        // Arrange
-        Animal animal =
-                new Animal("", "...", "...", "...", LocalDate.now(), Animal.Status.DISPONIVEL);
+        @Test
+        public void testSaveAnimal_ShouldThrowExceptionForEmptyName() {
+                // Arrange
+                Animal animal = new Animal("", "...", "...", "...", LocalDate.now(),
+                                Animal.Status.DISPONIVEL);
 
-        AnimalRepository mockRepository = mock(AnimalRepository.class);
-        when(mockRepository.save(any(Animal.class))).thenReturn(animal);
-        AnimalService animalService = new AnimalService(mockRepository);
+                AnimalRepository mockRepository = mock(AnimalRepository.class);
+                when(mockRepository.save(any(Animal.class))).thenReturn(animal);
+                AnimalService animalService = new AnimalService(mockRepository);
 
-        // Act & Assert
-        String expectedErrorMessage = "Animal name must not be blank.";
-        RuntimeException exception = assertThrows(IllegalArgumentException.class,
-                () -> animalService.saveAnimal(animal));
-        assertEquals(expectedErrorMessage, exception.getMessage());
-    }
+                // Act & Assert
+                String expectedErrorMessage = "Animal name must not be blank.";
+                RuntimeException exception = assertThrows(IllegalArgumentException.class,
+                                () -> animalService.saveAnimal(animal));
+                assertEquals(expectedErrorMessage, exception.getMessage());
+        }
 
-    @Test
-    public void testValidateAnimal() {
-        Animal animal = new Animal("Rex", "Um cachorro amigável e brincalhão.",
-                "https://example.com/rex.jpg", "cachorro", LocalDate.of(2018, 5, 20),
-                Animal.Status.DISPONIVEL);
+        @Test
+        public void testValidateAnimal() {
+                Animal animal = new Animal("Rex", "Um cachorro amigável e brincalhão.",
+                                "https://example.com/rex.jpg", "cachorro",
+                                LocalDate.of(2018, 5, 20), Animal.Status.DISPONIVEL);
 
-        assertDoesNotThrow(() -> animalService.saveAnimal(animal));
-    }
+                assertDoesNotThrow(() -> animalService.saveAnimal(animal));
+        }
 
-    @Test
-    public void testInvalidAnimal() {
-        Animal animal =
-                new Animal("", "Um cachorro amigável e brincalhão.", "https://example.com/rex.jpg",
-                        "cachorro", LocalDate.of(2018, 5, 20), Animal.Status.DISPONIVEL);
+        @Test
+        public void testInvalidAnimal() {
+                Animal animal = new Animal("", "Um cachorro amigável e brincalhão.",
+                                "https://example.com/rex.jpg", "cachorro",
+                                LocalDate.of(2018, 5, 20), Animal.Status.DISPONIVEL);
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            animalService.saveAnimal(animal);
-        });
+                Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+                        animalService.saveAnimal(animal);
+                });
 
-        assertEquals("Animal name must not be blank.", exception.getMessage());
-    }
+                assertEquals("Animal name must not be blank.", exception.getMessage());
+        }
 
-    @Test
-    public void testTrocarStatus_ShouldUpdateStatus() throws Exception {
-        // Arrange
-        Status newStatus = Status.ADOTADO;
-        Animal expectedAnimal =
-                new Animal("Rex", "...", "...", "...", LocalDate.now(), Status.DISPONIVEL);
+        @Test
+        public void testTrocarStatus_ShouldUpdateStatus() throws Exception {
+                // Arrange
+                Status newStatus = Status.ADOTADO;
+                Animal expectedAnimal = new Animal("Rex", "...", "...", "...", LocalDate.now(),
+                                Status.DISPONIVEL);
 
-        AnimalRepository mockRepository = mock(AnimalRepository.class);
+                AnimalRepository mockRepository = mock(AnimalRepository.class);
 
-        when(mockRepository.findById(expectedAnimal.getId()))
-                .thenReturn(Optional.of(expectedAnimal));
+                when(mockRepository.findById(expectedAnimal.getId()))
+                                .thenReturn(Optional.of(expectedAnimal));
 
-        doAnswer(invocation -> {
-            Animal savedAnimal = invocation.getArgument(0);
-            savedAnimal.setStatus(newStatus);
-            return savedAnimal;
-        }).when(mockRepository).save(any(Animal.class));
+                doAnswer(invocation -> {
+                        Animal savedAnimal = invocation.getArgument(0);
+                        savedAnimal.setStatus(newStatus);
+                        return savedAnimal;
+                }).when(mockRepository).save(any(Animal.class));
 
-        AnimalService animalService = new AnimalService(mockRepository);
+                AnimalService animalService = new AnimalService(mockRepository);
 
-        // Act
-        Animal updatedAnimal = animalService.trocarStatus(expectedAnimal.getId(), newStatus);
+                // Act
+                Animal updatedAnimal =
+                                animalService.trocarStatus(expectedAnimal.getId(), newStatus);
 
-        // Assert
-        assertThat(updatedAnimal).isNotNull();
-        assertThat(updatedAnimal.getId()).isEqualTo(expectedAnimal.getId());
-        assertThat(updatedAnimal.getStatus()).isEqualTo(newStatus);
-        verify(mockRepository).findById(expectedAnimal.getId());
-        verify(mockRepository).save(expectedAnimal);
-    }
+                // Assert
+                assertThat(updatedAnimal).isNotNull();
+                assertThat(updatedAnimal.getId()).isEqualTo(expectedAnimal.getId());
+                assertThat(updatedAnimal.getStatus()).isEqualTo(newStatus);
+                verify(mockRepository).findById(expectedAnimal.getId());
+                verify(mockRepository).save(expectedAnimal);
+        }
 
-    @Test
-    public void testTrocarStatus_ShouldThrowNotFoundException_WhenAnimalNotFound()
-            throws Exception {
-        // Arrange
-        Status newStatus = Status.ADOTADO;
-        AnimalRepository mockRepository = mock(AnimalRepository.class);
+        @Test
+        public void testTrocarStatus_ShouldThrowNotFoundException_WhenAnimalNotFound()
+                        throws Exception {
+                // Arrange
+                Status newStatus = Status.ADOTADO;
+                AnimalRepository mockRepository = mock(AnimalRepository.class);
 
-        when(mockRepository.findById(any(UUID.class))).thenReturn(Optional.empty());
-        AnimalService animalService = new AnimalService(mockRepository);
+                when(mockRepository.findById(any(UUID.class))).thenReturn(Optional.empty());
+                AnimalService animalService = new AnimalService(mockRepository);
 
-        // Act & Assert
-        String expectedErrorMessage = "Animal not found";
-        RuntimeException exception = assertThrows(ResourceNotFoundException.class,
-                () -> animalService.trocarStatus(UUID.randomUUID(), newStatus));
-        assertEquals(expectedErrorMessage, exception.getMessage());
-        verify(mockRepository).findById(any(UUID.class));
-    }
+                // Act & Assert
+                String expectedErrorMessage = "Animal not found";
+                RuntimeException exception = assertThrows(ResourceNotFoundException.class,
+                                () -> animalService.trocarStatus(UUID.randomUUID(), newStatus));
+                assertEquals(expectedErrorMessage, exception.getMessage());
+                verify(mockRepository).findById(any(UUID.class));
+        }
 
-    @Test
-    void testUploadAnimal() throws IOException {
-        // Arrange
-        String name = "Test Animal";
-        String birthdate = "2024-07-26";
-        String description = "A cute test animal";
-        Status status = Status.ADOTADO;
-        String category = "Test Category";
+        @Test
+        public void testUploadAnimal() throws IOException {
+                // Arrange
+                String name = "Test Animal";
+                String birthdate = "2024-07-29";
+                String description = "A cute test animal";
+                Status status = Status.ADOTADO;
+                String category = "Test Category";
 
-        MockMultipartFile foto =
-                new MockMultipartFile("foto", "test.jpg", "image/jpeg", "test data".getBytes());
+                MockMultipartFile foto = new MockMultipartFile("foto", "test.jpg", "image/jpeg",
+                                "test data".getBytes());
 
-        // Act
-        String result =
-                animalService.uploadAnimal(foto, name, birthdate, description, status, category);
+                // Act
+                String result = animalService.uploadAnimal(foto, name, birthdate, description,
+                                status, category);
 
-        // Assert
-        assertNotNull(result);
-        assertTrue(result.contains(name));
-        assertTrue(result.contains("criado com sucesso"));
-        assertTrue(result.contains("foto:"));
-
-        // Verify that the save method was called with the correct parameters
-        verify(animalRepository).save(any(Animal.class));
-    }
+                // Assert
+                assertNotNull(result);
+                assertTrue(result.contains(name));
+                assertTrue(result.contains("Animal \"Test Animal\" criado com sucesso"));
+                assertTrue(result.contains("foto:"));
+                assertTrue(result.contains("_test.jpg"));
+        }
 
 }
