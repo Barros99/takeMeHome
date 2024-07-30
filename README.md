@@ -20,7 +20,7 @@
 
 ## Sobre o projeto
 
-[![Take Me Home][product-screenshot]](https://github.com/Barros99/)
+[![Take Me Home][product-screenshot]](https://github.com/Barros99/takemehome)
 
 Take me home, um site de adoção de animais.
 
