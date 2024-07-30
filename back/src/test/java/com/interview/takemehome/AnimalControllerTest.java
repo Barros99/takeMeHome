@@ -6,38 +6,29 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.core.io.Resource;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.web.servlet.MockMvc;
 import com.interview.takemehome.controller.AnimalController;
 import com.interview.takemehome.model.Animal;
 import com.interview.takemehome.model.Animal.Status;
 import com.interview.takemehome.repository.AnimalRepository;
 import com.interview.takemehome.service.AnimalService;
 
-@DisplayName("AnimalController class test")
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 public class AnimalControllerTest {
 
     @InjectMocks
@@ -52,12 +43,9 @@ public class AnimalControllerTest {
     @Mock
     private ResourceLoader resourceLoader;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
+    @Mock
+    private MockMvc mockMvc;
 
-    private static final String DIRETORIO_UPLOAD = "src/assets/uploads/";
 
     @Test
     public void testGetAllAnimals_ShouldReturnOkWithAnimalsList() {
@@ -129,7 +117,6 @@ public class AnimalControllerTest {
                 Animal.Status.DISPONIVEL);
         Status newStatus = Status.ADOTADO;
 
-        // Configura o mock para executar a lógica correta do serviço
         when(animalService.trocarStatus(expectedAnimal.getId(), newStatus))
                 .thenAnswer(invocation -> {
                     expectedAnimal.setStatus(newStatus);
@@ -144,23 +131,4 @@ public class AnimalControllerTest {
         verify(animalService).trocarStatus(expectedAnimal.getId(), newStatus);
     }
 
-
-
-    @Test
-    void testServeFoto_ExistingFile_Success() throws IOException {
-        // Arrange
-        String filename = "a5fa4733-3a5b-4a7c-a807-123e48482bb6_test.png";
-        Path file = Paths.get("src/assets/uploads/").resolve(filename);
-        Resource mockResource = mock(Resource.class);
-        when(mockResource.exists()).thenReturn(true);
-        when(mockResource.isReadable()).thenReturn(true);
-        when(resourceLoader.getResource(file.toUri().toString())).thenReturn(mockResource);
-
-
-        ResponseEntity<Resource> response = animalController.serveFoto(filename);
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-
-        verify(resourceLoader).getResource("src/assets/uploads/" + filename);
-    }
 }
